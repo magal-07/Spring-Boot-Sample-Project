@@ -7,23 +7,23 @@ on:
 
 jobs:
   build_and_test:
-    [cite_start]runs-on: ubuntu-latest # Вибір ОС 
+    runs-on: ubuntu-latest # Вибір ОС 
 
     steps:
       - name: Clone the project
-        [cite_start]uses: actions/checkout@v4 # Клонування 
+        uses: actions/checkout@v4 # Клонування 
 
       - name: Install software (JDK 11)
-        [cite_start]uses: actions/setup-java@v4 # Встановлення Java 
+        uses: actions/setup-java@v4 # Встановлення Java 
         with:
-          [cite_start]java-version: '11' # Змінюємо 17 на 11 
+          java-version: '11' # Змінюємо 17 на 11 
           distribution: 'zulu'
 
       - name: Download dependencies
-        [cite_start]run: mvn install -DskipTests # Завантаження залежностей 
+        run: mvn install -DskipTests # Завантаження залежностей 
 
       - name: Create project build
-        [cite_start]run: mvn package -DskipTests # Створення білду 
+        run: mvn package -DskipTests # Створення білду 
 
       - name: Run unit tests
-        [cite_start]run: mvn test # Запуск тестів 
+        run: mvn test # Запуск тестів 
